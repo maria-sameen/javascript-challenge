@@ -1,97 +1,42 @@
 // Array of special characters to be included in password
-var specialCharacters = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.'
-];
-
-// Array of numeric characters to be included in password
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-// Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z'
-];
-
-// Array of uppercase characters to be included in password
-var upperCasedCharacters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z'
-];
+const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numericChars = "0123456789";
+const specialChars = "$@%&*()_+-=[]{}|;:,.<>?";
 
 // Function to prompt user for password options
-function getPasswordOptions() {
+function generatePassword() {
+  
+  var passwordLength = prompt("Enter password length(8-128 characters):");
+  if (passwordLength === null) {
+    return; // User clicked cancel
+  }
 
 }
+
+
+
+ // Validate at least one character type is selected
+ if (!includeLowercase && !includeUppercase && !includeNumeric && !includeSpecial) {
+  alert("At least one character type must be selected.");
+  return;
+}
+
+
+
+// Generate password using selected criteria
+let password = "";
+for (let i = 0; i < passwordLength; i++) {
+  password += charSet.charAt(Math.floor(Math.random() * charSet.length));
+}
+
+// Display generated password
+alert("Your password is: " + password);
+
+
+// Add event listener to generate button
+const generateButton = document.getElementById("generate-button");
+generateButton.addEventListener("click", generatePassword);
 
 // Function for getting a random element from an array
 function getRandom(arr) {
